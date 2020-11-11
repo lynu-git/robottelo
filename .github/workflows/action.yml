@@ -22,3 +22,5 @@ jobs:
           echo "${TAG}"
       - name: Test
         run: echo "${{ steps.image_tag.outputs.IMAGE_TAG }}"
+      - name: Test secrets
+        run: echo "${{ secrets.TEST_SECRET }}"
