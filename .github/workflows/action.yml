@@ -1,4 +1,4 @@
-name: Create and push Robottelo container image to Quay.
+name: update_robottelo_image
 
 on: [push]
 
