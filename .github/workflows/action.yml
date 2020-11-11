@@ -15,9 +15,9 @@ jobs:
         id: image_tag
         run: |
           echo -n ::set-output name=IMAGE_TAG::
-          TAG="latest"
-          if [ "${GITHUB_REF##*/}" != "master" ]; then
-              TAG="${GITHUB_REF##*/}"
+          TAG="${GITHUB_REF##*/}"
+          if [ "${TAG}" == "master" ]; then
+              TAG="latest"
           fi
           echo "${TAG}"
       - name: Test
