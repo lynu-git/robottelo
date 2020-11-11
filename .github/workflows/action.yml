@@ -21,4 +21,4 @@ jobs:
           fi
           echo "${TAG}"
       - name: Test
-        run: echo ${{ steps.image_tag.outputs.IMAGE_TAG }}"
+        run: echo "${{ steps.image_tag.outputs.IMAGE_TAG }}"
