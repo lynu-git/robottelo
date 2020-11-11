@@ -1,8 +1,6 @@
 name: Create and push Robottelo container image to Quay.
 
-on:
-  push:
-    branches: master
+on: [push]
 
 jobs:
   robottelo_container:
@@ -12,3 +10,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        
+      - name: Get image tag
+        id: image_tag
+        run: |
+          echo -n ::set-output name=IMAGE_TAG::
+          TAG="latest"
+          if [ "${GITHUB_REF##*/}" != "master" ]; then
+              TAG="${GITHUB_REF##*/}"
+          fi
+          echo "${TAG}"
+      - name: Test
+        run: echo ${{ steps.image_tag.outputs.IMAGE_TAG }}"
